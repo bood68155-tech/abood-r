@@ -11,7 +11,6 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://i.postimg.cc" />
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@200;300;400;500;600;700&family=Cairo:wght@400;600&display=swap"
     rel="stylesheet"
@@ -373,21 +372,6 @@
         confetti({ particleCount: 60, spread: 90, startVelocity: 38, origin: { y: 0.65 }, colors: CONFETTI_COLORS, scalar: 0.9 });
       }
     }, 1200);
-
-    // ---------------- Graceful image fallback ----------------
-    document.querySelectorAll('.gallery-img').forEach(function (img) {
-      img.addEventListener('error', function () {
-        img.onerror = null;
-        var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600">' +
-          '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
-          '<stop offset="0" stop-color="#141b29"/><stop offset=".5" stop-color="#0b0f17"/><stop offset="1" stop-color="#141b29"/>' +
-          '</linearGradient></defs>' +
-          '<rect width="600" height="600" fill="url(#g)"/>' +
-          '<rect x="24" y="24" width="552" height="552" fill="none" stroke="#d4af37" stroke-opacity=".3" stroke-width="1.5"/>' +
-          '<text x="50%" y="50%" font-size="150" fill="#d4af37" fill-opacity=".4" font-family="Georgia, serif" text-anchor="middle" dominant-baseline="middle">6/8</text></svg>';
-        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
-      });
-    });
   </script>
 </body>
 </html>
