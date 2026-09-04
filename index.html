@@ -63,6 +63,50 @@
       background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
     }
 
+    /* ---------- Metallic golden pushpin ---------- */
+    .pin {
+      position: absolute;
+      top: -17px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: none;
+    }
+    .pin-head {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 32% 26%, #fff8e1 0%, #f1e0a8 16%, #d4af37 42%, #9a7b1e 66%, #55430e 100%);
+      box-shadow:
+        0 4px 10px -1px rgba(0, 0, 0, 0.55),
+        inset 0 -3px 5px rgba(56, 42, 4, 0.5),
+        inset 0 2px 3px rgba(255, 255, 255, 0.65),
+        0 0 0 1px rgba(128, 100, 22, 0.4);
+    }
+    .pin-head::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 7px;
+      width: 13px;
+      height: 9px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.6);
+      transform: rotate(-28deg);
+      filter: blur(0.5px);
+    }
+    .pin-needle {
+      width: 3px;
+      height: 12px;
+      margin-top: -3px;
+      border-radius: 0 0 2px 2px;
+      background: linear-gradient(to bottom, #a3862c, #33270a);
+    }
+
     /* ---------- Scroll indicator ---------- */
     .scroll-line {
       position: relative;
@@ -245,71 +289,95 @@
           <h2 class="mt-4 font-serif text-4xl font-medium italic text-ivory sm:text-5xl">Our memories</h2>
         </div>
 
-        <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-16 flex flex-col gap-16 lg:gap-24">
 
-          <figure class="reveal reveal-d1 group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_20px_60px_-15px_rgba(212,175,55,0.25)]">
-            <div class="overflow-hidden">
+          <!-- Card 1 - Timeless Memories -->
+          <article class="reveal reveal-d1 group relative flex flex-col border border-white/10 bg-white/[0.02] transition-all duration-500 hover:border-gold/40 hover:shadow-[0_25px_70px_-25px_rgba(212,175,55,0.3)] lg:flex-row">
+            <span class="pin" aria-hidden="true"><span class="pin-head"></span><span class="pin-needle"></span></span>
+
+            <div class="border-b border-white/10 bg-[#0c101b] lg:w-[46%] lg:shrink-0 lg:border-b-0 lg:border-r">
               <img
                 src="./photo1.jpg"
-                alt="A memory with my best friend"
+                alt="Two brothers sharing a timeless memory"
                 loading="lazy"
                 decoding="async"
-                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                class="block h-auto w-full"
               />
             </div>
-            <div class="flex items-center justify-between border-t border-white/5 px-5 py-4">
-              <span class="text-[10px] uppercase tracking-[0.25em] text-slate-400">Memories</span>
-              <i data-lucide="camera" class="h-4 w-4 text-gold/80"></i>
-            </div>
-          </figure>
 
-          <figure class="reveal reveal-d2 group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_20px_60px_-15px_rgba(212,175,55,0.25)]">
-            <div class="overflow-hidden">
+            <div class="flex flex-1 flex-col justify-center gap-4 px-7 py-12 sm:px-10 lg:px-14">
+              <h3 class="font-serif text-3xl font-medium italic leading-tight text-ivory sm:text-4xl">Timeless Memories</h3>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.35em] text-gold/90">Moments frozen in time</p>
+              <span class="gold-hairline w-20"></span>
+              <p class="max-w-md font-sans text-[15px] font-light leading-relaxed text-slate-300 sm:text-base">To the brothers who turned ordinary days into unforgettable stories. Here's to every laugh and every milestone we shared.</p>
+            </div>
+          </article>
+
+          <!-- Card 2 - True Brotherhood -->
+          <article class="reveal reveal-d2 group relative flex flex-col border border-white/10 bg-white/[0.02] transition-all duration-500 hover:border-gold/40 hover:shadow-[0_25px_70px_-25px_rgba(212,175,55,0.3)] lg:flex-row">
+            <span class="pin" aria-hidden="true"><span class="pin-head"></span><span class="pin-needle"></span></span>
+
+            <div class="border-b border-white/10 bg-[#0c101b] lg:w-[46%] lg:shrink-0 lg:border-b-0 lg:border-r">
               <img
                 src="./photo2.jpg"
-                alt="A brotherhood moment"
+                alt="Two brothers standing side by side"
                 loading="lazy"
                 decoding="async"
-                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                class="block h-auto w-full"
               />
             </div>
-            <div class="flex items-center justify-between border-t border-white/5 px-5 py-4">
-              <span class="text-[10px] uppercase tracking-[0.25em] text-slate-400">Brotherhood</span>
-              <i data-lucide="heart" class="h-4 w-4 text-gold/80"></i>
-            </div>
-          </figure>
 
-          <figure class="reveal reveal-d3 group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_20px_60px_-15px_rgba(212,175,55,0.25)]">
-            <div class="overflow-hidden">
+            <div class="flex flex-1 flex-col justify-center gap-4 px-7 py-12 sm:px-10 lg:px-14">
+              <h3 class="font-serif text-3xl font-medium italic leading-tight text-ivory sm:text-4xl">True Brotherhood</h3>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.35em] text-gold/90">Side by side through it all</p>
+              <span class="gold-hairline w-20"></span>
+              <p class="max-w-md font-sans text-[15px] font-light leading-relaxed text-slate-300 sm:text-base">More than just friends—family chosen by heart. Distance or time will never fade the strength of this bond.</p>
+            </div>
+          </article>
+
+          <!-- Card 3 - Endless Laughter -->
+          <article class="reveal reveal-d3 group relative flex flex-col border border-white/10 bg-white/[0.02] transition-all duration-500 hover:border-gold/40 hover:shadow-[0_25px_70px_-25px_rgba(212,175,55,0.3)] lg:flex-row">
+            <span class="pin" aria-hidden="true"><span class="pin-head"></span><span class="pin-needle"></span></span>
+
+            <div class="border-b border-white/10 bg-[#0c101b] lg:w-[46%] lg:shrink-0 lg:border-b-0 lg:border-r">
               <img
                 src="./photo3.jpg"
-                alt="Laughing together"
+                alt="Friends laughing together"
                 loading="lazy"
                 decoding="async"
-                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                class="block h-auto w-full"
               />
             </div>
-            <div class="flex items-center justify-between border-t border-white/5 px-5 py-4">
-              <span class="text-[10px] uppercase tracking-[0.25em] text-slate-400">Laughter</span>
-              <i data-lucide="smile" class="h-4 w-4 text-gold/80"></i>
-            </div>
-          </figure>
 
-          <figure class="reveal reveal-d4 group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_20px_60px_-15px_rgba(212,175,55,0.25)]">
-            <div class="overflow-hidden">
+            <div class="flex flex-1 flex-col justify-center gap-4 px-7 py-12 sm:px-10 lg:px-14">
+              <h3 class="font-serif text-3xl font-medium italic leading-tight text-ivory sm:text-4xl">Endless Laughter</h3>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.35em] text-gold/90">Unfiltered joy and good energy</p>
+              <span class="gold-hairline w-20"></span>
+              <p class="max-w-md font-sans text-[15px] font-light leading-relaxed text-slate-300 sm:text-base">Surrounded by real ones who light up every room. Looking back at these days only brings a smile.</p>
+            </div>
+          </article>
+
+          <!-- Card 4 - To Infinity & Beyond -->
+          <article class="reveal reveal-d4 group relative flex flex-col border border-white/10 bg-white/[0.02] transition-all duration-500 hover:border-gold/40 hover:shadow-[0_25px_70px_-25px_rgba(212,175,55,0.3)] lg:flex-row">
+            <span class="pin" aria-hidden="true"><span class="pin-head"></span><span class="pin-needle"></span></span>
+
+            <div class="border-b border-white/10 bg-[#0c101b] lg:w-[46%] lg:shrink-0 lg:border-b-0 lg:border-r">
               <img
                 src="./photo4.jpg"
-                alt="Brothers for life"
+                alt="Brothers looking ahead to the future"
                 loading="lazy"
                 decoding="async"
-                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                class="block h-auto w-full"
               />
             </div>
-            <div class="flex items-center justify-between border-t border-white/5 px-5 py-4">
-              <span class="text-[10px] uppercase tracking-[0.25em] text-slate-400">Forever</span>
-              <i data-lucide="infinity" class="h-4 w-4 text-gold/80"></i>
+
+            <div class="flex flex-1 flex-col justify-center gap-4 px-7 py-12 sm:px-10 lg:px-14">
+              <h3 class="font-serif text-3xl font-medium italic leading-tight text-ivory sm:text-4xl">To Infinity &amp; Beyond</h3>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.35em] text-gold/90">An unbroken connection</p>
+              <span class="gold-hairline w-20"></span>
+              <p class="max-w-md font-sans text-[15px] font-light leading-relaxed text-slate-300 sm:text-base">Celebrating another incredible year of your life. May the journey ahead be even grander than the past.</p>
             </div>
-          </figure>
+          </article>
 
         </div>
       </div>
