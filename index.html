@@ -63,6 +63,26 @@
       background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
     }
 
+    /* ---------- Ambient glowing starfield ---------- */
+    .star {
+      position: absolute;
+      border-radius: 9999px;
+      background: #ffffff;
+      animation: twinkle var(--dur, 4s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+    .star--gold {
+      background: #f5e2a0;
+      box-shadow: 0 0 6px 1px rgba(245, 226, 160, 0.75), 0 0 16px 4px rgba(212, 175, 55, 0.3);
+    }
+    .star--white {
+      box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.55);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.12; transform: scale(0.7); }
+      50%      { opacity: 0.95; transform: scale(1.2); }
+    }
+
     /* ---------- Metallic golden pushpin ---------- */
     .pin {
       position: absolute;
@@ -202,7 +222,10 @@
   <main class="relative z-10">
 
     <!-- ==================== HERO ==================== -->
-    <header id="home" class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-24 pt-32 text-center">
+    <header id="home" class="relative isolate flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-24 pt-32 text-center">
+      <!-- Ambient glowing starfield -->
+      <div id="starfield" class="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true"></div>
+
       <!-- Oversized typographic watermark -->
       <span aria-hidden="true" class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-serif text-[20rem] italic leading-none text-ivory/[0.025] sm:text-[30rem]">6/8</span>
 
@@ -402,6 +425,25 @@
   <script>
     // ---------------- Lucide icons ----------------
     if (window.lucide) lucide.createIcons();
+
+    // ---------------- Ambient glowing starfield ----------------
+    (function buildStarfield() {
+      var field = document.getElementById('starfield');
+      if (!field) return;
+      for (var i = 0; i < 90; i++) {
+        var gold = Math.random() < 0.35;
+        var s = document.createElement('span');
+        s.className = 'star' + (gold ? ' star--gold' : ' star--white');
+        var size = gold ? 1.4 + Math.random() * 2.2 : 1 + Math.random() * 1.6;
+        s.style.width = size.toFixed(1) + 'px';
+        s.style.height = size.toFixed(1) + 'px';
+        s.style.left = Math.random() * 100 + '%';
+        s.style.top = Math.random() * 100 + '%';
+        s.style.setProperty('--dur', (2.6 + Math.random() * 4.6).toFixed(2) + 's');
+        s.style.setProperty('--delay', (-Math.random() * 9).toFixed(2) + 's');
+        field.appendChild(s);
+      }
+    })();
 
     // ---------------- Scroll reveal ----------------
     (function initReveal() {
