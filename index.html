@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday, Bro! 🎂🎉</title>
-  <meta name="description" content="A special birthday website celebrating my best friend & brother — born on August 6th (6/8)." />
-  <meta name="theme-color" content="#020617" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>" />
+  <title>Happy Birthday · 6/8</title>
+  <meta name="description" content="A quiet celebration for my best friend and brother — August 6th, 6/8." />
+  <meta name="theme-color" content="#0b0f17" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230b0f17'/%3E%3Ctext x='50' y='64' font-size='44' fill='%23d4af37' font-family='Georgia, serif' text-anchor='middle'%3E6/8%3C/text%3E%3C/svg%3E" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://i.postimg.cc" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@200;300;400;500;600;700&family=Cairo:wght@400;600&display=swap"
     rel="stylesheet"
   />
 
@@ -23,11 +23,17 @@
     tailwind.config = {
       theme: {
         extend: {
+          colors: {
+            obsidian: '#0b0f17',
+            gold: '#d4af37',
+            amberGold: '#f39c12',
+            champagne: '#e8d9a8',
+            ivory: '#f8f6f0',
+          },
           fontFamily: {
-            display: ['"Space Grotesk"', 'Cairo', 'sans-serif'],
-            body: ['Inter', 'Cairo', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
             arabic: ['Cairo', 'sans-serif'],
-            hand: ['Caveat', 'cursive'],
           },
         },
       },
@@ -37,123 +43,79 @@
   <style>
     :root { color-scheme: dark; }
     html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-    body { font-family: 'Inter', 'Cairo', sans-serif; }
+    body { font-family: 'Manrope', 'Cairo', sans-serif; }
 
-    ::selection { background: #8b5cf6; color: #fff; }
+    ::selection { background: #d4af37; color: #0b0f17; }
 
-    /* ---------- Animated gradient text ---------- */
-    .gradient-text {
-      background-image: linear-gradient(90deg, #a78bfa, #f0abfc, #818cf8, #22d3ee, #a78bfa);
+    /* ---------- Gold shimmer text ---------- */
+    .gold-text {
+      background-image: linear-gradient(110deg, #f5e7c6, #d4af37 35%, #f39c12 55%, #e8d9a8 75%, #d4af37);
       background-size: 200% auto;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: gradientX 6s linear infinite;
+      animation: goldShimmer 8s linear infinite;
     }
-    @keyframes gradientX { to { background-position: 200% center; } }
+    @keyframes goldShimmer { to { background-position: 200% center; } }
 
-    .glow-text { text-shadow: 0 0 60px rgba(217, 70, 239, 0.35); }
+    /* ---------- Refined hairline dividers ---------- */
+    .gold-hairline {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+    }
 
-    /* ---------- Background orbs ---------- */
-    .orb {
+    /* ---------- Scroll indicator ---------- */
+    .scroll-line {
+      position: relative;
+      width: 1px;
+      height: 64px;
+      background: rgba(148, 163, 184, 0.15);
+      overflow: hidden;
+    }
+    .scroll-line::after {
+      content: '';
       position: absolute;
-      border-radius: 9999px;
-      filter: blur(90px);
-      opacity: 0.3;
-      pointer-events: none;
+      left: 0;
+      top: -30%;
+      width: 100%;
+      height: 30%;
+      background: #d4af37;
+      animation: scrollDot 2.2s ease-in-out infinite;
     }
-    @keyframes floatSlow {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50%      { transform: translate(30px, -30px) scale(1.08); }
-    }
-    .anim-float   { animation: floatSlow 10s ease-in-out infinite; }
-    .anim-float-2 { animation: floatSlow 14s ease-in-out infinite reverse; }
-
-    /* ---------- Subtle grid overlay ---------- */
-    .bg-grid {
-      background-image:
-        linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
-      background-size: 44px 44px;
-      -webkit-mask-image: radial-gradient(ellipse 90% 65% at 50% 0%, #000 55%, transparent 100%);
-      mask-image: radial-gradient(ellipse 90% 65% at 50% 0%, #000 55%, transparent 100%);
+    @keyframes scrollDot {
+      0%   { top: -30%; }
+      100% { top: 110%; }
     }
 
-    /* ---------- Floating emojis ---------- */
-    .float-emoji {
+    /* ---------- Luxury button shine sweep ---------- */
+    .btn-lux { position: relative; overflow: hidden; }
+    .btn-lux::before {
+      content: '';
       position: absolute;
-      bottom: -70px;
-      opacity: 0.13;
-      animation: rise linear infinite;
+      inset: 0;
+      background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+      transform: translateX(-130%);
+      transition: transform 0.9s ease;
     }
-    @keyframes rise {
-      0%   { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-115vh) rotate(360deg); }
-    }
-
-    /* ---------- Confetti button glow ---------- */
-    .btn-confetti {
-      animation: pulseGlow 2.6s ease-in-out infinite;
-    }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(217, 70, 239, 0.55), 0 10px 40px -10px rgba(139, 92, 246, 0.6); }
-      50%      { box-shadow: 0 0 0 14px rgba(217, 70, 239, 0), 0 10px 40px -10px rgba(139, 92, 246, 0.6); }
-    }
-
-    /* ---------- Heartbeat ---------- */
-    .anim-heartbeat { display: inline-block; animation: heartbeat 1.8s ease-in-out infinite; }
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      25%      { transform: scale(1.18); }
-      40%      { transform: scale(1); }
-      60%      { transform: scale(1.12); }
-    }
+    .btn-lux:hover::before { transform: translateX(130%); }
 
     /* ---------- Scroll reveal ---------- */
     .reveal {
       opacity: 0;
-      transform: translateY(34px);
-      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(28px);
+      transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal.revealed { opacity: 1; transform: none; }
-    .reveal-d1 { transition-delay: 0.08s; }
-    .reveal-d2 { transition-delay: 0.16s; }
-    .reveal-d3 { transition-delay: 0.24s; }
-    .reveal-d4 { transition-delay: 0.32s; }
-
-    /* ---------- Polaroid cards ---------- */
-    .polaroid {
-      background: #f8fafc;
-      padding: 10px 10px 0;
-      box-shadow: 0 20px 50px -12px rgba(2, 6, 23, 0.85);
-      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
-      will-change: transform;
-    }
-    .polaroid:hover {
-      transform: translateY(-10px) rotate(0deg) scale(1.04) !important;
-      box-shadow:
-        0 30px 70px -15px rgba(139, 92, 246, 0.45),
-        0 0 40px -10px rgba(217, 70, 239, 0.35);
-    }
-    .polaroid::before {
-      content: '';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      width: 110px;
-      height: 26px;
-      transform: translateX(-50%) rotate(-2deg);
-      background: rgba(148, 163, 184, 0.28);
-      border-left: 1px dashed rgba(100, 116, 139, 0.55);
-      border-right: 1px dashed rgba(100, 116, 139, 0.55);
-      z-index: 10;
-    }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
 
     /* ---------- Accessibility ---------- */
     a:focus-visible, button:focus-visible {
-      outline: 2px solid #a78bfa;
+      outline: 2px solid #d4af37;
       outline-offset: 3px;
-      border-radius: 12px;
+      border-radius: 10px;
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -167,234 +129,201 @@
   </style>
 </head>
 
-<body class="bg-slate-950 text-slate-200 antialiased overflow-x-hidden">
+<body class="overflow-x-hidden bg-obsidian font-sans text-ivory/90 antialiased">
 
-  <!-- ==================== BACKGROUND LAYERS ==================== -->
-  <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(88,28,135,0.28),transparent_55%)]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(192,38,211,0.14),transparent_50%)]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(79,70,229,0.16),transparent_50%)]"></div>
-
-    <div class="orb anim-float -top-32 -start-32 h-[28rem] w-[28rem] bg-violet-600"></div>
-    <div class="orb anim-float-2 top-1/3 -end-40 h-[30rem] w-[30rem] bg-fuchsia-600"></div>
-    <div class="orb anim-float bottom-0 start-1/4 h-[26rem] w-[26rem] bg-indigo-600"></div>
-
-    <div class="absolute inset-0 bg-grid"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#020617_100%)]"></div>
+  <!-- ==================== BACKGROUND ==================== -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_45%_at_50%_-5%,rgba(212,175,55,0.09),transparent_70%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_88%_110%,rgba(243,156,18,0.05),transparent_70%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_10%_95%,rgba(212,175,55,0.04),transparent_70%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,#0b0f17_100%)]"></div>
   </div>
 
-  <!-- Floating emojis (filled by JS) -->
-  <div id="emojiLayer" class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true"></div>
-
   <!-- ==================== NAV ==================== -->
-  <nav class="fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-slate-950/70 backdrop-blur-xl">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
-      <a href="#home" class="flex items-center gap-2.5">
-        <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-lg shadow-lg shadow-fuchsia-500/30">🎂</span>
-        <span class="font-display text-lg font-bold text-white"><bdi>6/8</bdi></span>
-        <span class="hidden font-arabic text-sm text-slate-400 sm:inline">· يوم ميلاد مميز</span>
+  <nav class="fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-obsidian/70 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a href="#home" class="flex items-center gap-3">
+        <span class="font-serif text-2xl font-medium tracking-wide text-ivory">6/8</span>
+        <span class="h-6 w-px bg-gradient-to-b from-transparent via-gold/50 to-transparent"></span>
+        <span class="hidden text-[10px] uppercase tracking-[0.4em] text-slate-500 sm:block">Birthday</span>
       </a>
-      <div class="flex items-center gap-1 font-arabic text-sm">
-        <a href="#home" class="rounded-full px-3.5 py-2 text-slate-300 transition hover:bg-white/5 hover:text-white">الرئيسية</a>
-        <a href="#message" class="rounded-full px-3.5 py-2 text-slate-300 transition hover:bg-white/5 hover:text-white">الرسالة</a>
-        <a href="#memories" class="rounded-full px-3.5 py-2 text-slate-300 transition hover:bg-white/5 hover:text-white">ذكرياتنا</a>
-        <span class="mx-1 hidden h-6 w-px bg-white/10 sm:block"></span>
-        <a href="#memories" class="hidden items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-4 py-2 font-semibold text-white shadow-lg shadow-fuchsia-600/25 transition hover:brightness-110 sm:inline-flex">
-          🎉 Happy Birthday
-        </a>
+      <div class="flex items-center gap-7 text-[11px] uppercase tracking-[0.25em]">
+        <a href="#home" class="text-slate-400 transition-colors duration-300 hover:text-gold">Home</a>
+        <a href="#message" class="text-slate-400 transition-colors duration-300 hover:text-gold">Message</a>
+        <a href="#gallery" class="text-slate-400 transition-colors duration-300 hover:text-gold">Gallery</a>
       </div>
     </div>
   </nav>
 
-  <!-- ==================== MAIN CONTENT ==================== -->
+  <!-- ==================== MAIN ==================== -->
   <main class="relative z-10">
 
     <!-- ==================== HERO ==================== -->
-    <header id="home" class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-20 pt-28 text-center">
-      <!-- Giant watermark -->
-      <span dir="ltr" class="pointer-events-none absolute left-1/2 top-1/2 -z-0 -translate-x-1/2 -translate-y-1/2 select-none font-display text-[18rem] font-bold leading-none text-white/[0.03] sm:text-[24rem]">6/8</span>
+    <header id="home" class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-24 pt-32 text-center">
+      <!-- Oversized typographic watermark -->
+      <span aria-hidden="true" class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-serif text-[20rem] italic leading-none text-ivory/[0.025] sm:text-[30rem]">6/8</span>
 
-      <span class="reveal inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-500/10 px-5 py-2 font-arabic text-sm text-violet-200 backdrop-blur">
-        🎂 عيد ميلاد سعيد · Happy Birthday
-      </span>
-
-      <h1 dir="ltr" class="reveal mt-7 font-display text-5xl font-bold leading-tight text-white sm:text-7xl lg:text-8xl">
-        <span class="gradient-text">Happy Birthday,</span><br />
-        <span class="glow-text">Bro! 🎂🎉</span>
-      </h1>
-
-      <!-- Date badge -->
-      <div class="reveal reveal-d1 mt-9 inline-flex items-center gap-3 rounded-2xl border border-fuchsia-400/25 bg-gradient-to-r from-violet-500/15 via-fuchsia-500/15 to-indigo-500/15 px-6 py-3.5 shadow-[0_0_30px_-10px_rgba(217,70,239,0.45)] backdrop-blur">
-        <span class="text-3xl">🎈</span>
-        <div>
-          <p dir="ltr" class="font-display text-lg font-semibold text-slate-100 sm:text-xl">Born on August 6th · 6/8</p>
-          <p class="font-arabic text-xs text-slate-400 sm:text-sm">السادس من أغسطس — يوم مميز دائمًا</p>
-        </div>
+      <!-- Kicker -->
+      <div class="reveal flex items-center gap-5">
+        <span class="gold-hairline w-14 sm:w-20"></span>
+        <span class="text-[10px] uppercase tracking-[0.5em] text-gold/80 sm:text-[11px]">For my best friend &amp; brother</span>
+        <span class="gold-hairline w-14 sm:w-20"></span>
       </div>
 
-      <p class="reveal reveal-d2 mt-7 max-w-xl font-arabic text-lg leading-relaxed text-slate-400 sm:text-xl">
-        لكل أخ وصديق.. مهما تباعدت المسافات، يبقى هذا اليوم من أجمل أيام السنة 💜
+      <!-- Headline -->
+      <h1 class="reveal reveal-d1 mt-8 font-serif text-7xl font-medium leading-[0.95] text-ivory sm:text-8xl lg:text-9xl">
+        <span class="block">Happy</span>
+        <span class="gold-text block italic">Birthday</span>
+      </h1>
+
+      <p class="reveal reveal-d2 mt-8 max-w-xl font-sans text-base font-light leading-relaxed text-slate-400 sm:text-lg">
+        To the one who turned the ordinary into unforgettable — may this year bring you everything you quietly wish for.
       </p>
 
-      <!-- Confetti button -->
+      <!-- Date badge -->
+      <div class="reveal reveal-d3 mt-10 inline-flex items-center gap-3 rounded-full border border-gold/25 bg-gold/[0.04] px-6 py-2.5 backdrop-blur-sm">
+        <i data-lucide="calendar" class="h-4 w-4 text-gold"></i>
+        <span class="text-xs font-medium uppercase tracking-[0.3em] text-champagne sm:text-sm">August 6th • 6/8</span>
+      </div>
+
+      <!-- Luxury confetti action -->
       <button
         id="confettiBtn"
         type="button"
-        class="btn-confetti reveal reveal-d3 group mt-10 inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 px-9 py-4 font-display text-lg font-bold text-white transition-transform duration-300 hover:scale-105 active:scale-95"
+        class="btn-lux reveal reveal-d3 group mt-12 inline-flex items-center gap-3 rounded-full border border-gold/40 bg-gold/[0.06] px-9 py-4 backdrop-blur-sm transition-all duration-500 hover:border-gold/80 hover:bg-gold/10 hover:shadow-[0_0_45px_-10px_rgba(212,175,55,0.55)] active:scale-[0.98]"
       >
-        <span class="text-2xl transition-transform duration-300 group-hover:rotate-12">🎉</span>
-        <span dir="ltr">Fire the Confetti!</span>
+        <i data-lucide="sparkles" class="h-4 w-4 text-gold transition-transform duration-500 group-hover:rotate-12"></i>
+        <span class="text-xs font-medium uppercase tracking-[0.3em] text-ivory sm:text-sm">Celebrate</span>
       </button>
-      <p class="reveal reveal-d3 mt-4 font-arabic text-sm text-slate-500">إضغط و احتفل معنا 🥳</p>
 
       <!-- Scroll cue -->
-      <a href="#message" aria-label="Scroll to the message" class="absolute bottom-7 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 text-slate-400 transition-colors hover:text-violet-300">
-        <span class="font-arabic text-xs">اكتشف المزيد</span>
-        <span class="animate-bounce text-2xl">⌄</span>
+      <a href="#message" aria-label="Scroll to the message" class="reveal reveal-d4 absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-slate-500 transition-colors duration-300 hover:text-gold">
+        <span class="text-[9px] uppercase tracking-[0.5em]">Scroll</span>
+        <span class="scroll-line block"></span>
       </a>
     </header>
 
+    <div class="gold-hairline mx-auto max-w-3xl"></div>
+
     <!-- ==================== MESSAGE ==================== -->
-    <section id="message" class="relative px-6 py-24 sm:py-32">
-      <div class="mx-auto max-w-4xl">
+    <section id="message" class="relative px-6 py-28 sm:py-36">
+      <div class="mx-auto max-w-3xl">
         <div class="reveal text-center">
-          <span class="font-arabic text-sm tracking-widest text-fuchsia-300">رسالة من القلب</span>
-          <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-5xl">
-            A Message <span class="gradient-text">From The Heart</span>
-          </h2>
+          <span class="text-[10px] uppercase tracking-[0.5em] text-gold/70 sm:text-[11px]">A message</span>
+          <h2 class="mt-4 font-serif text-4xl font-medium italic text-ivory sm:text-5xl">From the heart</h2>
         </div>
 
-        <div class="reveal reveal-d1 mt-12 rounded-[2rem] bg-gradient-to-br from-violet-500/50 via-fuchsia-500/40 to-indigo-500/50 p-[1.5px] shadow-[0_25px_80px_-20px_rgba(139,92,246,0.45)]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-1.5px)] bg-slate-900/95 px-7 py-12 backdrop-blur sm:px-14 sm:py-14">
+        <div class="reveal reveal-d1 relative mt-14 rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl sm:p-14">
+          <div class="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"></div>
+          <span aria-hidden="true" class="pointer-events-none absolute -top-9 start-7 select-none font-serif text-[8rem] leading-none text-gold/10">"</span>
 
-            <!-- Decorative quotes -->
-            <span class="pointer-events-none absolute -top-8 start-6 select-none font-display text-[9rem] leading-none text-violet-500/15">"</span>
-            <span class="pointer-events-none absolute -bottom-12 end-6 select-none font-display text-[9rem] leading-none text-fuchsia-500/10">"</span>
+          <p class="relative font-sans text-base font-light leading-loose text-[#c8c2b4] sm:text-xl sm:leading-loose">
+            Happy Birthday to my best friend and brother! Born on
+            <span class="whitespace-nowrap font-serif text-lg italic text-champagne sm:text-2xl">August 6th (6/8)</span>
+            — a day that brought an incredible person into my life. Thank you for all the unforgettable memories, the deep talks, the laughs, and for always having my back through thick and thin. I wish you a year filled with success, joy, health, and endless happiness. Here's to making many more amazing memories together.
+          </p>
 
-            <!-- Inner glow blobs -->
-            <div class="pointer-events-none absolute -end-24 -top-24 h-64 w-64 rounded-full bg-violet-600/20 blur-3xl"></div>
-            <div class="pointer-events-none absolute -bottom-24 -start-24 h-64 w-64 rounded-full bg-fuchsia-600/15 blur-3xl"></div>
-
-            <p class="relative font-body text-lg leading-relaxed text-slate-200 sm:text-2xl sm:leading-relaxed">
-              “Happy Birthday to my best friend and brother! Born on
-              <bdi dir="ltr" class="bg-gradient-to-r from-violet-300 to-fuchsia-300 bg-clip-text font-semibold text-transparent">August 6th (6/8)</bdi>
-              — a day that brought an incredible person into my life. Thank you for all the unforgettable memories, the deep talks, the laughs, and for always having my back through thick and thin. I wish you a year filled with success, joy, health, and endless happiness. Here's to making many more amazing memories together!”
-            </p>
-
-            <!-- Signature -->
-            <div class="relative mt-10 flex flex-wrap items-center justify-between gap-5">
-              <div class="flex items-center gap-3.5">
-                <span class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-xl shadow-lg shadow-fuchsia-500/30">🤝</span>
-                <div class="text-start">
-                  <p dir="ltr" class="font-display font-semibold text-white">Your Best Friend &amp; Brother</p>
-                  <p class="font-arabic text-sm text-slate-400">من أخيك وصديقك الأقرب — يحبك دائمًا 💜</p>
-                </div>
-              </div>
-              <span class="anim-heartbeat text-4xl">💜</span>
-            </div>
-
-            <!-- Chips -->
-            <div class="relative mt-10 flex flex-wrap justify-center gap-2.5">
-              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-arabic text-sm text-slate-300">✨ ذكريات لا تُنسى</span>
-              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-arabic text-sm text-slate-300">💬 أحاديث عميقة</span>
-              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-arabic text-sm text-slate-300">😂 ضحك من القلب</span>
-              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-arabic text-sm text-slate-300">🤝 إخوة للأبد</span>
-              <span class="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-arabic text-sm text-slate-300">🚀 نجاح وسعادة</span>
-            </div>
+          <div class="relative mt-12 flex flex-col items-center gap-5">
+            <div class="gold-hairline w-44"></div>
+            <p class="font-serif text-xl font-medium italic text-gold">Your Best Friend &amp; Brother</p>
+            <p dir="rtl" class="font-arabic text-sm text-slate-500">من أخيك وصديقك الأقرب</p>
           </div>
+
+          <p class="relative mt-12 text-center text-[10px] uppercase tracking-[0.35em] text-slate-500 sm:text-[11px]">
+            Memories <span class="mx-2 text-gold/60">·</span> Laughter <span class="mx-2 text-gold/60">·</span> Brotherhood <span class="mx-2 text-gold/60">·</span> Forever
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ==================== POLAROID GALLERY ==================== -->
-    <section id="memories" class="relative px-6 pb-28 pt-8 sm:pb-36">
+    <div class="gold-hairline mx-auto max-w-3xl"></div>
+
+    <!-- ==================== GALLERY ==================== -->
+    <section id="gallery" class="relative px-6 py-28 sm:py-36">
       <div class="mx-auto max-w-6xl">
         <div class="reveal text-center">
-          <span class="font-arabic text-sm tracking-widest text-violet-300">ذكرياتنا</span>
-          <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-5xl">
-            Our <span class="gradient-text">Memories</span>
-          </h2>
-          <p class="mt-4 font-arabic text-slate-400">كل صورة تحكي قصة.. وكل قصة تجمعنا أكثر 💜</p>
+          <span class="text-[10px] uppercase tracking-[0.5em] text-gold/70 sm:text-[11px]">The gallery</span>
+          <h2 class="mt-4 font-serif text-4xl font-medium italic text-ivory sm:text-5xl">Our memories</h2>
         </div>
 
-        <div class="mt-16 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
-          <figure class="reveal reveal-d1 polaroid group relative cursor-pointer rounded-md rotate-[-2.5deg]">
-            <div class="overflow-hidden rounded-[3px] bg-slate-200">
+          <figure class="reveal reveal-d1 group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_20px_60px_-15px_rgba(212,175,55,0.25)]">
+            <div class="overflow-hidden">
               <img
                 src="https://i.postimg.cc/y823XGKN/5823658122608840490-121.jpg"
-                alt="A happy memory with my best friend"
+                alt="A memory with my best friend"
                 loading="lazy"
                 decoding="async"
-                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
               />
             </div>
-            <figcaption class="py-3.5 text-center">
-              <span class="font-hand text-2xl text-slate-800">Good Times</span>
-              <span class="mt-0.5 block font-arabic text-xs text-slate-500">أيام جميلة</span>
-            </figcaption>
+            <div class="flex items-center justify-between border-t border-white/5 px-5 py-4">
+              <span class="text-[10px] uppercase tracking-[0.25em] text-slate-400">Memories</span>
+              <i data-lucide="camera" class="h-4 w-4 text-gold/80"></i>
+            </div>
           </figure>
 
-          <figure class="reveal reveal-d2 polaroid group relative cursor-pointer rounded-md rotate-[2deg]">
-            <div class="overflow-hidden rounded-[3px] bg-slate-200">
+          <figure class="reveal reveal-d2 group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_20px_60px_-15px_rgba(212,175,55,0.25)]">
+            <div class="overflow-hidden">
               <img
                 src="https://i.postimg.cc/BbhX8YPr/5823658122608840491-121.jpg"
-                alt="Brotherhood moment captured"
+                alt="A brotherhood moment"
                 loading="lazy"
                 decoding="async"
-                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
               />
             </div>
-            <figcaption class="py-3.5 text-center">
-              <span class="font-hand text-2xl text-slate-800">Real Ones</span>
-              <span class="mt-0.5 block font-arabic text-xs text-slate-500">أصحاب حقيقيين</span>
-            </figcaption>
+            <div class="flex items-center justify-between border-t border-white/5 px-5 py-4">
+              <span class="text-[10px] uppercase tracking-[0.25em] text-slate-400">Brotherhood</span>
+              <i data-lucide="heart" class="h-4 w-4 text-gold/80"></i>
+            </div>
           </figure>
 
-          <figure class="reveal reveal-d3 polaroid group relative cursor-pointer rounded-md rotate-[-1.5deg]">
-            <div class="overflow-hidden rounded-[3px] bg-slate-200">
+          <figure class="reveal reveal-d3 group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_20px_60px_-15px_rgba(212,175,55,0.25)]">
+            <div class="overflow-hidden">
               <img
                 src="https://i.postimg.cc/k5xGNXWf/5823658122608840492-121.jpg"
-                alt="Laughing together like always"
+                alt="Laughing together"
                 loading="lazy"
                 decoding="async"
-                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
               />
             </div>
-            <figcaption class="py-3.5 text-center">
-              <span class="font-hand text-2xl text-slate-800">Laughs</span>
-              <span class="mt-0.5 block font-arabic text-xs text-slate-500">ضحك من القلب</span>
-            </figcaption>
+            <div class="flex items-center justify-between border-t border-white/5 px-5 py-4">
+              <span class="text-[10px] uppercase tracking-[0.25em] text-slate-400">Laughter</span>
+              <i data-lucide="smile" class="h-4 w-4 text-gold/80"></i>
+            </div>
           </figure>
 
-          <figure class="reveal reveal-d4 polaroid group relative cursor-pointer rounded-md rotate-[2.5deg]">
-            <div class="overflow-hidden rounded-[3px] bg-slate-200">
+          <figure class="reveal reveal-d4 group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_20px_60px_-15px_rgba(212,175,55,0.25)]">
+            <div class="overflow-hidden">
               <img
                 src="https://i.postimg.cc/mg9gR2Vw/5823658122608840493-121.jpg"
                 alt="Brothers for life"
                 loading="lazy"
                 decoding="async"
-                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                class="gallery-img aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
               />
             </div>
-            <figcaption class="py-3.5 text-center">
-              <span class="font-hand text-2xl text-slate-800">Forever</span>
-              <span class="mt-0.5 block font-arabic text-xs text-slate-500">للأبد</span>
-            </figcaption>
+            <div class="flex items-center justify-between border-t border-white/5 px-5 py-4">
+              <span class="text-[10px] uppercase tracking-[0.25em] text-slate-400">Forever</span>
+              <i data-lucide="infinity" class="h-4 w-4 text-gold/80"></i>
+            </div>
           </figure>
 
         </div>
       </div>
     </section>
 
+    <div class="gold-hairline mx-auto max-w-3xl"></div>
+
     <!-- ==================== FOOTER ==================== -->
-    <footer class="relative border-t border-white/5 px-6 py-12 text-center">
+    <footer class="relative px-6 py-20 text-center">
       <div class="mx-auto max-w-3xl">
-        <p class="font-arabic text-sm text-slate-500">صُنع بكل الحب 💜 لصديقي وأخي الغالي</p>
-        <p dir="ltr" class="mt-4 font-display text-xl font-bold text-slate-200">
-          Happy Birthday, Bro! <span class="anim-heartbeat">🎂</span> <bdi>6/8</bdi>
-        </p>
-        <p dir="ltr" class="mt-2 font-body text-sm text-slate-500">Here's to many more memories together ✨</p>
+        <p class="font-serif text-3xl font-medium italic text-ivory">Happy Birthday, <span class="gold-text">6/8</span></p>
+        <p class="mt-6 text-[10px] uppercase tracking-[0.4em] text-slate-500">Made with love — for the best of friends</p>
+        <p dir="rtl" class="mt-8 font-arabic text-sm text-slate-600">صُنع بحبّ، لأعزّ الأصدقاء</p>
       </div>
     </footer>
 
@@ -402,22 +331,10 @@
 
   <!-- ==================== SCRIPTS ==================== -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <script>
-    // ---------------- Floating emojis ----------------
-    (function addFloatingEmojis() {
-      var layer = document.getElementById('emojiLayer');
-      var emojis = ['🎂', '🎈', '🎉', '✨', '🎁', '💜', '🥳'];
-      for (var i = 0; i < 16; i++) {
-        var e = document.createElement('span');
-        e.className = 'float-emoji';
-        e.textContent = emojis[i % emojis.length];
-        e.style.left = Math.random() * 100 + 'vw';
-        e.style.fontSize = 16 + Math.random() * 26 + 'px';
-        e.style.animationDuration = 18 + Math.random() * 26 + 's';
-        e.style.animationDelay = -Math.random() * 40 + 's';
-        layer.appendChild(e);
-      }
-    })();
+    // ---------------- Lucide icons ----------------
+    if (window.lucide) lucide.createIcons();
 
     // ---------------- Scroll reveal ----------------
     (function initReveal() {
@@ -432,8 +349,8 @@
       document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
     })();
 
-    // ---------------- Confetti ----------------
-    var CONFETTI_COLORS = ['#a78bfa', '#c084fc', '#818cf8', '#22d3ee', '#f0abfc', '#facc15', '#ffffff', '#34d399'];
+    // ---------------- Confetti (gold palette) ----------------
+    var CONFETTI_COLORS = ['#d4af37', '#f39c12', '#e8d9a8', '#f8f6f0', '#b8860b', '#c9a227'];
 
     function fireConfetti() {
       if (typeof confetti === 'undefined') return;
@@ -443,19 +360,19 @@
         confetti({ particleCount: 4, angle: 120, spread: 60, startVelocity: 55, origin: { x: 1, y: 0.7 }, colors: CONFETTI_COLORS });
         if (Date.now() < end) requestAnimationFrame(frame);
       })();
-      confetti({ particleCount: 140, spread: 110, startVelocity: 45, origin: { y: 0.6 }, colors: CONFETTI_COLORS, scalar: 1.05, ticks: 250 });
-      confetti({ particleCount: 60, spread: 360, startVelocity: 30, origin: { y: 0.5 }, shapes: ['circle'], colors: ['#facc15', '#a78bfa', '#f0abfc'], scalar: 0.8 });
+      confetti({ particleCount: 130, spread: 110, startVelocity: 45, origin: { y: 0.6 }, colors: CONFETTI_COLORS, scalar: 1.05, ticks: 250 });
+      confetti({ particleCount: 50, spread: 360, startVelocity: 30, origin: { y: 0.5 }, shapes: ['circle'], colors: ['#d4af37', '#f39c12', '#e8d9a8'], scalar: 0.8 });
     }
 
     var btn = document.getElementById('confettiBtn');
     if (btn) btn.addEventListener('click', fireConfetti);
 
-    // Welcome burst shortly after load
+    // Subtle welcome burst
     setTimeout(function () {
       if (typeof confetti !== 'undefined') {
-        confetti({ particleCount: 90, spread: 100, startVelocity: 40, origin: { y: 0.65 }, colors: CONFETTI_COLORS, scalar: 0.95 });
+        confetti({ particleCount: 60, spread: 90, startVelocity: 38, origin: { y: 0.65 }, colors: CONFETTI_COLORS, scalar: 0.9 });
       }
-    }, 900);
+    }, 1200);
 
     // ---------------- Graceful image fallback ----------------
     document.querySelectorAll('.gallery-img').forEach(function (img) {
@@ -463,10 +380,11 @@
         img.onerror = null;
         var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600">' +
           '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
-          '<stop offset="0" stop-color="#7c3aed"/><stop offset=".5" stop-color="#db2777"/><stop offset="1" stop-color="#6366f1"/>' +
+          '<stop offset="0" stop-color="#141b29"/><stop offset=".5" stop-color="#0b0f17"/><stop offset="1" stop-color="#141b29"/>' +
           '</linearGradient></defs>' +
           '<rect width="600" height="600" fill="url(#g)"/>' +
-          '<text x="50%" y="52%" font-size="150" text-anchor="middle" dominant-baseline="middle">🎂</text></svg>';
+          '<rect x="24" y="24" width="552" height="552" fill="none" stroke="#d4af37" stroke-opacity=".3" stroke-width="1.5"/>' +
+          '<text x="50%" y="50%" font-size="150" fill="#d4af37" fill-opacity=".4" font-family="Georgia, serif" text-anchor="middle" dominant-baseline="middle">6/8</text></svg>';
         img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
       });
     });
